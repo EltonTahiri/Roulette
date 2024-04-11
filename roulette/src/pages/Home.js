@@ -44,23 +44,31 @@ const data = [
 const Roulette = () => {
     const [mustSpin, setMustSpin] = useState(false);
     const [prizeNumber, setPrizeNumber] = useState(0);
-    const [userInput, setUserInput] = useState('');
+    const [userInput, setUserInput] = useState(0);
 
     const handleSpinClick = () => {
         if (!mustSpin) {
             const newPrizeNumber = parseInt(userInput); // Use user input as prize number
             if (!isNaN(newPrizeNumber) && newPrizeNumber >= 0 && newPrizeNumber < data.length) {
                 setPrizeNumber(newPrizeNumber);
+                console.log(prizeNumber)
                 setMustSpin(true);
             } else {
                 alert('Please enter a valid prize number between 0 and ' + (data.length - 1));
             }
         }
+        
     }
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
     }
+    const updatedData = data.map(item => {
+        if (parseInt(item.option) === parseInt(userInput)) {
+            return { ...item, style: { ...item.style, borderColor: 'yellow',textColor: "", borderWidth: '10px', } };
+        }
+        return item;
+    });
 
     return (
         <>
@@ -96,7 +104,7 @@ const Roulette = () => {
             <Wheel
                 mustStartSpinning={mustSpin}
                 prizeNumber={prizeNumber}
-                data={data}
+                data={updatedData}
                 onStopSpinning={() => {
                     setMustSpin(false);
                 }}
