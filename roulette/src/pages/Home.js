@@ -51,7 +51,6 @@ const Roulette = () => {
             const newPrizeNumber = parseInt(userInput); // Use user input as prize number
             if (!isNaN(newPrizeNumber) && newPrizeNumber >= 0 && newPrizeNumber < data.length) {
                 setPrizeNumber(newPrizeNumber);
-                console.log(prizeNumber)
                 setMustSpin(true);
             } else {
                 alert('Please enter a valid prize number between 0 and ' + (data.length - 1));
