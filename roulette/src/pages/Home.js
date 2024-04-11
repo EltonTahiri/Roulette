@@ -65,7 +65,7 @@ const Roulette = () => {
     }
     const updatedData = data.map(item => {
         if (parseInt(item.option) === parseInt(userInput)) {
-            return { ...item, style: { ...item.style, borderColor: 'yellow',textColor: "", borderWidth: '10px', } };
+            return { ...item, style: { ...item.style, borderColor: 'yellow',textColor: "yellow", borderWidth: '10px', } };
         }
         return item;
     });
